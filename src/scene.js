@@ -5,7 +5,7 @@ export async function setupEnvironment(renderer, scene) {
     // 1. Cargamos el HDRI para ambiente y fondo
     const exrLoader = new EXRLoader();
     try {
-        const texture = await exrLoader.loadAsync('/textures/EveningSkyHDRI022B_4K_HDR.exr');
+        const texture = await exrLoader.loadAsync('textures/EveningSkyHDRI022B_4K_HDR.exr');
         texture.mapping = THREE.EquirectangularReflectionMapping;
 
         scene.background = texture;

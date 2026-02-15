@@ -100,10 +100,10 @@ import { LightControls } from './components/LightControls.js';
     const colliders = [];
 
     // --- Nuevo Modelo: piso-0.fbx (Usando Factoría modFBX.js) ---
-    loadFBX(scene, '/models/piso-0.fbx', {
-        color: '/textures/1-pisoMadera/Wood082B_2K-JPG_Color.jpg',
-        roughness: '/textures/1-pisoMadera/Wood082B_2K-JPG_Roughness.jpg',
-        normal: '/textures/1-pisoMadera/Wood082B_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/piso-0.fbx', {
+        color: 'textures/1-pisoMadera/Wood082B_2K-JPG_Color.jpg',
+        roughness: 'textures/1-pisoMadera/Wood082B_2K-JPG_Roughness.jpg',
+        normal: 'textures/1-pisoMadera/Wood082B_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [5.5, 5.5],
@@ -117,10 +117,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: rampaMadera-1.fbx (Configuración Madera - Mapeo Escalera) ---
-    loadFBX(scene, '/models/rampaMadera-1.fbx', {
-        color: '/textures/1-pisoMadera/Wood082B_2K-JPG_Color.jpg',
-        roughness: '/textures/1-pisoMadera/Wood082B_2K-JPG_Roughness.jpg',
-        normal: '/textures/1-pisoMadera/Wood082B_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/rampaMadera-1.fbx', {
+        color: 'textures/1-pisoMadera/Wood082B_2K-JPG_Color.jpg',
+        roughness: 'textures/1-pisoMadera/Wood082B_2K-JPG_Roughness.jpg',
+        normal: 'textures/1-pisoMadera/Wood082B_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [3, 3],
@@ -135,10 +135,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: piso-1.fbx (Configuración Madera - Segundo Piso) ---
-    loadFBX(scene, '/models/piso-1.fbx', {
-        color: '/textures/1-pisoMadera/Wood082B_2K-JPG_Color.jpg',
-        roughness: '/textures/1-pisoMadera/Wood082B_2K-JPG_Roughness.jpg',
-        normal: '/textures/1-pisoMadera/Wood082B_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/piso-1.fbx', {
+        color: 'textures/1-pisoMadera/Wood082B_2K-JPG_Color.jpg',
+        roughness: 'textures/1-pisoMadera/Wood082B_2K-JPG_Roughness.jpg',
+        normal: 'textures/1-pisoMadera/Wood082B_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [5.5, 5.5],
@@ -152,10 +152,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: piso-00.fbx (Configuración Madera - Planta Baja Extension) ---
-    loadFBX(scene, '/models/piso-00.fbx', {
-        color: '/textures/1-pisoMadera/Wood082B_2K-JPG_Color.jpg',
-        roughness: '/textures/1-pisoMadera/Wood082B_2K-JPG_Roughness.jpg',
-        normal: '/textures/1-pisoMadera/Wood082B_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/piso-00.fbx', {
+        color: 'textures/1-pisoMadera/Wood082B_2K-JPG_Color.jpg',
+        roughness: 'textures/1-pisoMadera/Wood082B_2K-JPG_Roughness.jpg',
+        normal: 'textures/1-pisoMadera/Wood082B_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [5.5, 5.5],
@@ -170,10 +170,10 @@ import { LightControls } from './components/LightControls.js';
 
 
     // --- Nuevo Modelo: piso-2.fbx (Configuración Madera - Planta Alta / Segmento 3) ---
-    loadFBX(scene, '/models/piso-2.fbx', {
-        color: '/textures/1-pisoMadera/Wood082B_2K-JPG_Color.jpg',
-        roughness: '/textures/1-pisoMadera/Wood082B_2K-JPG_Roughness.jpg',
-        normal: '/textures/1-pisoMadera/Wood082B_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/piso-2.fbx', {
+        color: 'textures/1-pisoMadera/Wood082B_2K-JPG_Color.jpg',
+        roughness: 'textures/1-pisoMadera/Wood082B_2K-JPG_Roughness.jpg',
+        normal: 'textures/1-pisoMadera/Wood082B_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [5.5, 5.5],
@@ -187,10 +187,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: pared-1.fbx (Configuración Concreto) ---
-    loadFBX(scene, '/models/pared-1.fbx', {
-        color: '/textures/2-concreteQuad/Concrete031_2K-JPG_Color.jpg',
-        roughness: '/textures/2-concreteQuad/Concrete031_2K-JPG_Roughness.jpg',
-        normal: '/textures/2-concreteQuad/Concrete031_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/pared-1.fbx', {
+        color: 'textures/2-concreteQuad/Concrete031_2K-JPG_Color.jpg',
+        roughness: 'textures/2-concreteQuad/Concrete031_2K-JPG_Roughness.jpg',
+        normal: 'textures/2-concreteQuad/Concrete031_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [2, 2],
@@ -204,10 +204,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: pared-2.fbx (Configuración Concreto - Muro 2) ---
-    loadFBX(scene, '/models/pared-2.fbx', {
-        color: '/textures/2-concreteQuad/Concrete031_2K-JPG_Color.jpg',
-        roughness: '/textures/2-concreteQuad/Concrete031_2K-JPG_Roughness.jpg',
-        normal: '/textures/2-concreteQuad/Concrete031_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/pared-2.fbx', {
+        color: 'textures/2-concreteQuad/Concrete031_2K-JPG_Color.jpg',
+        roughness: 'textures/2-concreteQuad/Concrete031_2K-JPG_Roughness.jpg',
+        normal: 'textures/2-concreteQuad/Concrete031_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [1.45, 1.45],
@@ -222,10 +222,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: pared-3.fbx (Configuración Concreto - Muro 3) ---
-    loadFBX(scene, '/models/pared-3.fbx', {
-        color: '/textures/2-concreteQuad/Concrete031_2K-JPG_Color.jpg',
-        roughness: '/textures/2-concreteQuad/Concrete031_2K-JPG_Roughness.jpg',
-        normal: '/textures/2-concreteQuad/Concrete031_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/pared-3.fbx', {
+        color: 'textures/2-concreteQuad/Concrete031_2K-JPG_Color.jpg',
+        roughness: 'textures/2-concreteQuad/Concrete031_2K-JPG_Roughness.jpg',
+        normal: 'textures/2-concreteQuad/Concrete031_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [2.01, 2.01],
@@ -239,10 +239,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: pared-4.fbx (Configuración Concreto - Muro 4) ---
-    loadFBX(scene, '/models/pared-4.fbx', {
-        color: '/textures/2-concreteQuad/Concrete031_2K-JPG_Color.jpg',
-        roughness: '/textures/2-concreteQuad/Concrete031_2K-JPG_Roughness.jpg',
-        normal: '/textures/2-concreteQuad/Concrete031_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/pared-4.fbx', {
+        color: 'textures/2-concreteQuad/Concrete031_2K-JPG_Color.jpg',
+        roughness: 'textures/2-concreteQuad/Concrete031_2K-JPG_Roughness.jpg',
+        normal: 'textures/2-concreteQuad/Concrete031_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [1, 1],
@@ -256,10 +256,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: pared-5.fbx (Configuración Concreto - Muro 5) ---
-    loadFBX(scene, '/models/pared-5.fbx', {
-        color: '/textures/2-concreteQuad/Concrete031_2K-JPG_Color.jpg',
-        roughness: '/textures/2-concreteQuad/Concrete031_2K-JPG_Roughness.jpg',
-        normal: '/textures/2-concreteQuad/Concrete031_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/pared-5.fbx', {
+        color: 'textures/2-concreteQuad/Concrete031_2K-JPG_Color.jpg',
+        roughness: 'textures/2-concreteQuad/Concrete031_2K-JPG_Roughness.jpg',
+        normal: 'textures/2-concreteQuad/Concrete031_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [1, 1],
@@ -274,10 +274,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: pared-6.fbx (Configuración Concreto - Muro 6) ---
-    loadFBX(scene, '/models/pared-6.fbx', {
-        color: '/textures/2-concreteQuad/Concrete031_2K-JPG_Color.jpg',
-        roughness: '/textures/2-concreteQuad/Concrete031_2K-JPG_Roughness.jpg',
-        normal: '/textures/2-concreteQuad/Concrete031_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/pared-6.fbx', {
+        color: 'textures/2-concreteQuad/Concrete031_2K-JPG_Color.jpg',
+        roughness: 'textures/2-concreteQuad/Concrete031_2K-JPG_Roughness.jpg',
+        normal: 'textures/2-concreteQuad/Concrete031_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [1.45, 1.45],
@@ -291,11 +291,11 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: paredes4EntrePiso.fbx (Configuración Concreto Simple) ---
-    loadFBX(scene, '/models/paredes4EntrePiso.fbx', {
-        color: '/textures/4-ConcretSimple/Concrete011_2K-JPG_Color.jpg',
-        roughness: '/textures/4-ConcretSimple/Concrete011_2K-JPG_Roughness.jpg',
-        normal: '/textures/4-ConcretSimple/Concrete011_2K-JPG_NormalGL.jpg',
-        ao: '/textures/4-ConcretSimple/Concrete011_2K-JPG_AmbientOcclusion.jpg'
+    loadFBX(scene, 'models/paredes4EntrePiso.fbx', {
+        color: 'textures/4-ConcretSimple/Concrete011_2K-JPG_Color.jpg',
+        roughness: 'textures/4-ConcretSimple/Concrete011_2K-JPG_Roughness.jpg',
+        normal: 'textures/4-ConcretSimple/Concrete011_2K-JPG_NormalGL.jpg',
+        ao: 'textures/4-ConcretSimple/Concrete011_2K-JPG_AmbientOcclusion.jpg'
     }, {
         scale: 0.01,
         repeat: [2, 2],
@@ -313,10 +313,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: paredes4EntrePisoCostado.fbx (Configuración Madera Pared) ---
-    loadFBX(scene, '/models/paredes4EntrePisoCostado.fbx', {
-        color: '/textures/6-maderaPared/Wood024_2K-JPG_Color.jpg',
-        roughness: '/textures/6-maderaPared/Wood024_2K-JPG_Roughness.jpg',
-        normal: '/textures/6-maderaPared/Wood024_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/paredes4EntrePisoCostado.fbx', {
+        color: 'textures/6-maderaPared/Wood024_2K-JPG_Color.jpg',
+        roughness: 'textures/6-maderaPared/Wood024_2K-JPG_Roughness.jpg',
+        normal: 'textures/6-maderaPared/Wood024_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [2, 2],
@@ -325,10 +325,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: puertaMadera.fbx (Configuración Madera Puerta) ---
-    loadFBX(scene, '/models/puertaMadera.fbx', {
-        color: '/textures/8-maderaPuerta/Wood053_2K-JPG_Color.jpg',
-        roughness: '/textures/8-maderaPuerta/Wood053_2K-JPG_Roughness.jpg',
-        normal: '/textures/8-maderaPuerta/Wood053_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/puertaMadera.fbx', {
+        color: 'textures/8-maderaPuerta/Wood053_2K-JPG_Color.jpg',
+        roughness: 'textures/8-maderaPuerta/Wood053_2K-JPG_Roughness.jpg',
+        normal: 'textures/8-maderaPuerta/Wood053_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [1, 1], // Ajustar repeticón visualmente
@@ -337,10 +337,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: 1pared.fbx (Configuración Madera Puerta) ---
-    loadFBX(scene, '/models/1pared.fbx', {
-        color: '/textures/4-ConcretSimple/Concrete036_2K-JPG_Color.jpg',
-        roughness: '/textures/4-ConcretSimple/Concrete036_2K-JPG_Roughness.jpg',
-        normal: '/textures/4-ConcretSimple/Concrete036_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/1pared.fbx', {
+        color: 'textures/4-ConcretSimple/Concrete036_2K-JPG_Color.jpg',
+        roughness: 'textures/4-ConcretSimple/Concrete036_2K-JPG_Roughness.jpg',
+        normal: 'textures/4-ConcretSimple/Concrete036_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [2, 2],
@@ -349,12 +349,12 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: a-1-metalBajoCalle.fbx (Configuración Metal Vidrios) ---
-    loadFBX(scene, '/models/a-1-metalBajoCalle.fbx', {
-        color: '/textures/5-metalVidrios/Metal050A_2K-JPG_Color.jpg',
-        metal: '/textures/5-metalVidrios/Metal050A_2K-JPG_Metalness.jpg',
-        roughness: '/textures/5-metalVidrios/Metal050A_2K-JPG_Roughness.jpg',
-        normal: '/textures/5-metalVidrios/Metal050A_2K-JPG_NormalGL.jpg',
-        displacement: '/textures/5-metalVidrios/Metal050A_2K-JPG_Displacement.jpg'
+    loadFBX(scene, 'models/a-1-metalBajoCalle.fbx', {
+        color: 'textures/5-metalVidrios/Metal050A_2K-JPG_Color.jpg',
+        metal: 'textures/5-metalVidrios/Metal050A_2K-JPG_Metalness.jpg',
+        roughness: 'textures/5-metalVidrios/Metal050A_2K-JPG_Roughness.jpg',
+        normal: 'textures/5-metalVidrios/Metal050A_2K-JPG_NormalGL.jpg',
+        displacement: 'textures/5-metalVidrios/Metal050A_2K-JPG_Displacement.jpg'
     }, {
         scale: 0.01,
         repeat: [1, 1],
@@ -368,7 +368,7 @@ import { LightControls } from './components/LightControls.js';
 
     // --- Nuevo Modelo: a-2-detalleMetalPiso.fbx (Metal Cromado Procedural) ---
     const chromeFBXLoader = new FBXLoader();
-    chromeFBXLoader.load('/models/a-2-detalleMetalPiso.fbx', (fbx) => {
+    chromeFBXLoader.load('models/a-2-detalleMetalPiso.fbx', (fbx) => {
         fbx.scale.setScalar(0.01);
 
         // Material cromado procedural (sin texturas)
@@ -394,7 +394,7 @@ import { LightControls } from './components/LightControls.js';
 
     // --- Nuevo Modelo: a-3-vidrio.fbx (Material Vidrio Transparente) ---
     const glassFBXLoader = new FBXLoader();
-    glassFBXLoader.load('/models/a-3-vidrio.fbx', (fbx) => {
+    glassFBXLoader.load('models/a-3-vidrio.fbx', (fbx) => {
         fbx.scale.setScalar(0.01);
 
         // Material vidrio procedural (transparente con tinte azul suave y efecto lupa)
@@ -427,7 +427,7 @@ import { LightControls } from './components/LightControls.js';
 
     // --- Nuevo Modelo: a-4-vidrioCalle.fbx (Material Vidrio Transparente Naranja) ---
     const glassOrangeFBXLoader = new FBXLoader();
-    glassOrangeFBXLoader.load('/models/a-4-vidrioCalle.fbx', (fbx) => {
+    glassOrangeFBXLoader.load('models/a-4-vidrioCalle.fbx', (fbx) => {
         fbx.scale.setScalar(0.01);
 
         // Material vidrio procedural (transparente con tinte naranja suave y efecto lupa)
@@ -460,7 +460,7 @@ import { LightControls } from './components/LightControls.js';
 
     // --- Nuevo Modelo: a-5-vidrioInternoPuerta.fbx (Vidrio Esmerilado Semi-transparente) ---
     const glassFrostedFBXLoader = new FBXLoader();
-    glassFrostedFBXLoader.load('/models/a-5-vidrioInternoPuerta.fbx', (fbx) => {
+    glassFrostedFBXLoader.load('models/a-5-vidrioInternoPuerta.fbx', (fbx) => {
         fbx.scale.setScalar(0.01);
 
         // Material vidrio esmerilado (opaco, semi-transparente)
@@ -492,10 +492,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: a-6-ParedesCalle.fbx (Configuración Concreto Simple) ---
-    loadFBX(scene, '/models/a-6-ParedesCalle.fbx', {
-        color: '/textures/4-ConcretSimple/Concrete036_2K-JPG_Color.jpg',
-        roughness: '/textures/4-ConcretSimple/Concrete036_2K-JPG_Roughness.jpg',
-        normal: '/textures/4-ConcretSimple/Concrete036_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/a-6-ParedesCalle.fbx', {
+        color: 'textures/4-ConcretSimple/Concrete036_2K-JPG_Color.jpg',
+        roughness: 'textures/4-ConcretSimple/Concrete036_2K-JPG_Roughness.jpg',
+        normal: 'textures/4-ConcretSimple/Concrete036_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [2, 2],
@@ -509,10 +509,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: rampa1.fbx (Configuración Madera - Rampa 2) ---
-    loadFBX(scene, '/models/rampa1.fbx', {
-        color: '/textures/3-madera/Wood023_2K-JPG_Color.jpg',
-        roughness: '/textures/3-madera/Wood023_2K-JPG_Roughness.jpg',
-        normal: '/textures/3-madera/Wood023_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/rampa1.fbx', {
+        color: 'textures/3-madera/Wood023_2K-JPG_Color.jpg',
+        roughness: 'textures/3-madera/Wood023_2K-JPG_Roughness.jpg',
+        normal: 'textures/3-madera/Wood023_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [6, 6],
@@ -526,10 +526,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: rampaConcretoTriple.fbx (Configuración Concreto - Rampa Concreto Triple) ---
-    loadFBX(scene, '/models/rampaConcretoTriple.fbx', {
-        color: '/textures/4-ConcretSimple/Concrete036_2K-JPG_Color.jpg',
-        roughness: '/textures/4-ConcretSimple/Concrete036_2K-JPG_Roughness.jpg',
-        normal: '/textures/4-ConcretSimple/Concrete036_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/rampaConcretoTriple.fbx', {
+        color: 'textures/4-ConcretSimple/Concrete036_2K-JPG_Color.jpg',
+        roughness: 'textures/4-ConcretSimple/Concrete036_2K-JPG_Roughness.jpg',
+        normal: 'textures/4-ConcretSimple/Concrete036_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [1, 1],
@@ -543,10 +543,10 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: pared-8.fbx (Configuración Concreto - Muro 8) ---
-    loadFBX(scene, '/models/pared-8.fbx', {
-        color: '/textures/4-ConcretSimple/Concrete036_2K-JPG_Color.jpg',
-        roughness: '/textures/4-ConcretSimple/Concrete036_2K-JPG_Roughness.jpg',
-        normal: '/textures/4-ConcretSimple/Concrete036_2K-JPG_NormalGL.jpg'
+    loadFBX(scene, 'models/pared-8.fbx', {
+        color: 'textures/4-ConcretSimple/Concrete036_2K-JPG_Color.jpg',
+        roughness: 'textures/4-ConcretSimple/Concrete036_2K-JPG_Roughness.jpg',
+        normal: 'textures/4-ConcretSimple/Concrete036_2K-JPG_NormalGL.jpg'
     }, {
         scale: 0.01,
         repeat: [5, 5],
@@ -561,10 +561,10 @@ import { LightControls } from './components/LightControls.js';
 
     // --- Nuevos Modelos: Techos (Configuración Concreto - Techos 1 al 4) ---
     ['techo-1.fbx', 'techo-2.fbx', 'techo-3.fbx', 'techo-4.fbx'].forEach(file => {
-        loadFBX(scene, `/models/${file}`, {
-            color: '/textures/4-ConcretSimple/Concrete036_2K-JPG_Color.jpg',
-            roughness: '/textures/4-ConcretSimple/Concrete036_2K-JPG_Roughness.jpg',
-            normal: '/textures/4-ConcretSimple/Concrete036_2K-JPG_NormalGL.jpg'
+        loadFBX(scene, `models/${file}`, {
+            color: 'textures/4-ConcretSimple/Concrete036_2K-JPG_Color.jpg',
+            roughness: 'textures/4-ConcretSimple/Concrete036_2K-JPG_Roughness.jpg',
+            normal: 'textures/4-ConcretSimple/Concrete036_2K-JPG_NormalGL.jpg'
         }, {
             scale: 0.01,
             repeat: [4, 4],
@@ -579,11 +579,11 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: baseTecho.fbx (Texturas 7-metalBaseTecho) ---
-    loadFBX(scene, '/models/baseTecho.fbx', {
-        color: '/textures/7-metalBaseTecho/Metal046A_4K-JPG_Color.jpg',
-        metal: '/textures/7-metalBaseTecho/Metal046A_4K-JPG_Metalness.jpg',
-        normal: '/textures/7-metalBaseTecho/Metal046A_4K-JPG_NormalGL.jpg',
-        roughness: '/textures/7-metalBaseTecho/Metal046A_4K-JPG_Roughness.jpg'
+    loadFBX(scene, 'models/baseTecho.fbx', {
+        color: 'textures/7-metalBaseTecho/Metal046A_4K-JPG_Color.jpg',
+        metal: 'textures/7-metalBaseTecho/Metal046A_4K-JPG_Metalness.jpg',
+        normal: 'textures/7-metalBaseTecho/Metal046A_4K-JPG_NormalGL.jpg',
+        roughness: 'textures/7-metalBaseTecho/Metal046A_4K-JPG_Roughness.jpg'
     }, {
         scale: 0.01,
         repeat: [4, 4],
@@ -597,7 +597,7 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: ventilador.glb (Respetando texturas originales) ---
-    loader.load('/models/ventilador.glb', (gltf) => {
+    loader.load('models/ventilador.glb', (gltf) => {
         const model = gltf.scene;
         // Prevenir luces "intrusas" embebidas en el modelo
         model.traverse((child) => {
@@ -615,7 +615,7 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: baranda.glb (Configuración Baranda Metálica - Sincronizado con Ventilador) ---
-    loader.load('/models/baranda.glb', (gltf) => {
+    loader.load('models/baranda.glb', (gltf) => {
         const model = gltf.scene;
         model.traverse((child) => {
             if (child.isLight) {
@@ -632,7 +632,7 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: marcoMetal.glb (Respetando texturas originales) ---
-    loader.load('/models/marcoMetal.glb', (gltf) => {
+    loader.load('models/marcoMetal.glb', (gltf) => {
         const model = gltf.scene;
         model.traverse((child) => {
             if (child.isLight) {
@@ -649,7 +649,7 @@ import { LightControls } from './components/LightControls.js';
     });
 
     // --- Nuevo Modelo: elevador1.glb (Respetando texturas originales) ---
-    loader.load('/models/elevador1.glb', (gltf) => {
+    loader.load('models/elevador1.glb', (gltf) => {
         const model = gltf.scene;
         model.traverse((child) => {
             if (child.isLight) {
@@ -667,7 +667,7 @@ import { LightControls } from './components/LightControls.js';
 
     // --- Nuevo Modelo: vidriosRampa.fbx (Configuración Vidrio WebGL Simple) ---
     const glassRampLoader = new FBXLoader();
-    glassRampLoader.load('/models/vidriosRampa.fbx', (fbx) => {
+    glassRampLoader.load('models/vidriosRampa.fbx', (fbx) => {
         fbx.scale.setScalar(0.01);
         const vidrioRampaMaterial = new THREE.MeshPhysicalMaterial({
             color: 0xffffff,
@@ -693,7 +693,7 @@ import { LightControls } from './components/LightControls.js';
 
     // --- Nuevo Modelo: vidriosRampa2.fbx (Configuración Vidrio WebGL Simple) ---
     const glassRamp2Loader = new FBXLoader();
-    glassRamp2Loader.load('/models/vidriosRampa2.fbx', (fbx) => {
+    glassRamp2Loader.load('models/vidriosRampa2.fbx', (fbx) => {
         fbx.scale.setScalar(0.01);
         const vidrioRampa2Material = new THREE.MeshPhysicalMaterial({
             color: 0xffffff,
@@ -719,7 +719,7 @@ import { LightControls } from './components/LightControls.js';
 
     // --- Nuevo Modelo: vidriosRampa3.fbx (Configuración Vidrio WebGL Simple) ---
     const glassRamp3Loader = new FBXLoader();
-    glassRamp3Loader.load('/models/vidriosRampa3.fbx', (fbx) => {
+    glassRamp3Loader.load('models/vidriosRampa3.fbx', (fbx) => {
         fbx.scale.setScalar(0.01);
         const vidrioRampa3Material = new THREE.MeshPhysicalMaterial({
             color: 0xffffff,
@@ -745,7 +745,7 @@ import { LightControls } from './components/LightControls.js';
 
     // --- Misión Crítica: Cargar Piso Principal (piso2.glb) ---
     try {
-        const piso2Gltf = await loader.loadAsync('/models/piso2.glb');
+        const piso2Gltf = await loader.loadAsync('models/piso2.glb');
         const modelPiso = piso2Gltf.scene;
         // Prevenir luces "intrusas" en el suelo
         modelPiso.traverse((child) => {
