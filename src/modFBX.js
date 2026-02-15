@@ -31,19 +31,25 @@ export async function loadFBX(scene, modelPath, textures = {}, options = {}) {
     const transparentPixel = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 
     manager.setURLModifier((url) => {
-        // Normalizar URL (decodificar URL-encoded characters como %20)
-        const decodedUrl = decodeURI(url);
+        try {
+            // Normalizar URL (decodificar URL-encoded characters como %20) y convertir a minúsculas
+            const decodedUrl = decodeURI(url).toLowerCase();
 
-        // Detectar indicadores de rutas locales absolutas en CUALQUIER PARTE de la URL
-        // Ej: /home/, /Users/, C:/, o referencias a carpetas de documentos
-        const hasLocalContext = decodedUrl.includes('/home/') ||
-            decodedUrl.includes('/Users/') ||
-            decodedUrl.includes('Documents/modeling') ||
-            /[a-zA-Z]:\//.test(decodedUrl);
+            // Detectar indicadores de rutas locales absolutas en CUALQUIER PARTE de la URL
+            const hasLocalContext = decodedUrl.includes('/home/') ||
+                decodedUrl.includes('/users/') ||
+                decodedUrl.includes('documents/modeling') ||
+                decodedUrl.includes('tasks/task') ||
+                /[a-z]:\//.test(decodedUrl);
 
-        if (hasLocalContext) {
-            // console.warn(`[modFBX] 🛡️ Bloqueando textura local intrusa: ${url}`);
-            return transparentPixel;
+            if (hasLocalContext) {
+                // console.warn(`[modFBX] 🛡️ BLOCKED: ${url}`);
+                return transparentPixel;
+            }
+        } catch (e) {
+            console.warn(`[modFBX] Error decodificando URL: ${url}`, e);
+            // Si falla la decodificación, verificar la URL original por si acaso
+            if (url.toLowerCase().includes('/home/')) return transparentPixel;
         }
 
         return url;
