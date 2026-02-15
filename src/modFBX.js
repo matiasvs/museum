@@ -31,15 +31,18 @@ export async function loadFBX(scene, modelPath, textures = {}, options = {}) {
     const transparentPixel = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 
     manager.setURLModifier((url) => {
-        // Regex para detectar rutas absolutas de sistemas de archivos (Windows/Linux/Mac)
-        // Coincide con: /home/, /Users/, C:/, D:/, etc., o rutas largas que contienen 'Documents'
-        const isAbsolutePath = /^(\/home\/|\/Users\/|[a-zA-Z]:\/|.*Documents\/)/i.test(url);
+        // Normalizar URL (decodificar URL-encoded characters como %20)
+        const decodedUrl = decodeURI(url);
 
-        // También atrapa URLs que empiezan con doble slash (protocol relative) erróneo local
-        const isProtocolRelativeLocal = url.startsWith('//home') || url.startsWith('//Users');
+        // Detectar indicadores de rutas locales absolutas en CUALQUIER PARTE de la URL
+        // Ej: /home/, /Users/, C:/, o referencias a carpetas de documentos
+        const hasLocalContext = decodedUrl.includes('/home/') ||
+            decodedUrl.includes('/Users/') ||
+            decodedUrl.includes('Documents/modeling') ||
+            /[a-zA-Z]:\//.test(decodedUrl);
 
-        if (isAbsolutePath || isProtocolRelativeLocal) {
-            // console.warn(`[modFBX] 🛡️ Interceptando ruta absoluta inválida: ${url}`);
+        if (hasLocalContext) {
+            // console.warn(`[modFBX] 🛡️ Bloqueando textura local intrusa: ${url}`);
             return transparentPixel;
         }
 
