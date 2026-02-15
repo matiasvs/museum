@@ -31,8 +31,8 @@ export async function loadFBX(scene, modelPath, textures = {}, options = {}) {
     const transparentPixel = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 
     manager.setURLModifier((url) => {
-        console.log(`[modFBX] URLModifier received: ${url}`);
         // [Fix v4] Debugging: Log ALL suspicious URLs before processing
+        // console.log(`[modFBX] URLModifier received: ${url}`);
         // if (url.includes('home') || url.includes('Documents')) {
         //    console.warn(`[modFBX] 🔍 Checking suspicious URL: ${url}`);
         // }
@@ -50,14 +50,14 @@ export async function loadFBX(scene, modelPath, textures = {}, options = {}) {
 
             if (hasLocalContext) {
                 // Descomentar para debug
-                console.warn(`[modFBX] 🛡️ BLOCKED LOCAL PATH: ${url}`);
+                // console.warn(`[modFBX] 🛡️ BLOCKED LOCAL PATH: ${url}`);
                 return transparentPixel;
             }
         } catch (e) {
-            console.warn(`[modFBX] Error decodificando URL: ${url}`, e);
+            // console.warn(`[modFBX] Error decodificando URL: ${url}`, e);
             // Fallback agresivo si falla decode
             if (url.toLowerCase().includes('/home/')) {
-                console.warn(`[modFBX] 🛡️ BLOCKED (fallback): ${url}`);
+                // console.warn(`[modFBX] 🛡️ BLOCKED (fallback): ${url}`);
                 return transparentPixel;
             }
         }
