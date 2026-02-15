@@ -31,7 +31,12 @@ export async function loadFBX(scene, modelPath, textures = {}, options = {}) {
     const transparentPixel = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 
     manager.setURLModifier((url) => {
-        // [Fix v3] Robust absolute path blocking
+        console.log(`[modFBX] URLModifier received: ${url}`);
+        // [Fix v4] Debugging: Log ALL suspicious URLs before processing
+        // if (url.includes('home') || url.includes('Documents')) {
+        //    console.warn(`[modFBX] 🔍 Checking suspicious URL: ${url}`);
+        // }
+
         try {
             // Normalizar URL (decodificar URL-encoded characters como %20) y convertir a minúsculas
             const decodedUrl = decodeURI(url).toLowerCase();
@@ -51,7 +56,10 @@ export async function loadFBX(scene, modelPath, textures = {}, options = {}) {
         } catch (e) {
             console.warn(`[modFBX] Error decodificando URL: ${url}`, e);
             // Fallback agresivo si falla decode
-            if (url.toLowerCase().includes('/home/')) return transparentPixel;
+            if (url.toLowerCase().includes('/home/')) {
+                console.warn(`[modFBX] 🛡️ BLOCKED (fallback): ${url}`);
+                return transparentPixel;
+            }
         }
 
         return url;
