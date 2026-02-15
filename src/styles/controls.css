@@ -1,0 +1,138 @@
+/* Glassmorphism Container */
+#light-controls-container {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    padding: 20px 30px;
+    background: rgba(40, 40, 40, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    z-index: 1000;
+    user-select: none;
+}
+
+/* Control Group */
+.control-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+/* Custom Range Slider */
+input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    /* Standard property */
+    width: 100%;
+    background: transparent;
+    cursor: pointer;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+/* Gradient específico para Time of Day */
+#time-slider::-webkit-slider-runnable-track {
+    background: linear-gradient(to right,
+            #1a1a2e 0%,
+            /* Medianoche */
+            #16213e 12.5%,
+            /* Madrugada */
+            #ff6b6b 20%,
+            /* Amanecer */
+            #ffd93d 25%,
+            /* Mañana */
+            #6bcfff 50%,
+            /* Mediodía */
+            #ffd93d 75%,
+            /* Tarde */
+            #ff6b6b 80%,
+            /* Atardecer */
+            #16213e 87.5%,
+            /* Anochecer */
+            #1a1a2e 100%
+            /* Noche */
+        );
+}
+
+#time-slider::-moz-range-track {
+    background: linear-gradient(to right,
+            #1a1a2e 0%, #16213e 12.5%, #ff6b6b 20%, #ffd93d 25%,
+            #6bcfff 50%, #ffd93d 75%, #ff6b6b 80%, #16213e 87.5%, #1a1a2e 100%);
+}
+
+/* Gradient para Orientation X (similar al Y) */
+#orientation-x-slider::-webkit-slider-runnable-track {
+    background: linear-gradient(to right,
+            #4a90e2 0%,
+            #50c878 50%,
+            #4a90e2 100%);
+}
+
+#orientation-x-slider::-moz-range-track {
+    background: linear-gradient(to right,
+            #4a90e2 0%,
+            #50c878 50%,
+            #4a90e2 100%);
+}
+
+/* Slider Track - Orientation (Standard) */
+#orientation-slider {
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Slider Thumb (Knob) */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffffff 40%, #e0e0e0 100%);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    margin-top: -9px;
+    /* Centering on track */
+    border: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+input[type=range]::-moz-range-thumb {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffffff 40%, #e0e0e0 100%);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Bottom Labels */
+.ticks {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 5px;
+}
