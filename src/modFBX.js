@@ -45,7 +45,7 @@ export async function loadFBX(scene, modelPath, textures = {}, options = {}) {
 
             if (hasLocalContext) {
                 // Descomentar para debug
-                // console.warn(`[modFBX] 🛡️ BLOCKED LOCAL PATH: ${url}`);
+                console.warn(`[modFBX] 🛡️ BLOCKED LOCAL PATH: ${url}`);
                 return transparentPixel;
             }
         } catch (e) {
