@@ -26,7 +26,20 @@ export async function loadFBX(scene, modelPath, textures = {}, options = {}) {
 
     console.log(`[modFBX] 🚀 Iniciando carga: ${modelPath}`, { textures, options });
 
-    const fbxLoader = new FBXLoader();
+    // --- MANAGER PARA INTERCEPTAR RUTAS ABSOLUTAS ---
+    const manager = new THREE.LoadingManager();
+    const transparentPixel = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
+
+    manager.setURLModifier((url) => {
+        // Detectar rutas absolutas locales o sospechosas que causan 404 en FBX
+        if (url.includes('/home/') || url.includes('Documents/modeling') || url.startsWith('//') || (url.startsWith('/') && !url.startsWith('/museum/'))) {
+            // console.warn(`[modFBX] 🛡️ Interceptando ruta absoluta inválida: ${url}`);
+            return transparentPixel;
+        }
+        return url;
+    });
+
+    const fbxLoader = new FBXLoader(manager);
     const textureLoader = new THREE.TextureLoader();
 
     try {
