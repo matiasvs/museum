@@ -31,6 +31,7 @@ export async function loadFBX(scene, modelPath, textures = {}, options = {}) {
     const transparentPixel = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 
     manager.setURLModifier((url) => {
+        // [Fix v3] Robust absolute path blocking
         try {
             // Normalizar URL (decodificar URL-encoded characters como %20) y convertir a minúsculas
             const decodedUrl = decodeURI(url).toLowerCase();
@@ -43,12 +44,13 @@ export async function loadFBX(scene, modelPath, textures = {}, options = {}) {
                 /[a-z]:\//.test(decodedUrl);
 
             if (hasLocalContext) {
-                // console.warn(`[modFBX] 🛡️ BLOCKED: ${url}`);
+                // Descomentar para debug
+                // console.warn(`[modFBX] 🛡️ BLOCKED LOCAL PATH: ${url}`);
                 return transparentPixel;
             }
         } catch (e) {
             console.warn(`[modFBX] Error decodificando URL: ${url}`, e);
-            // Si falla la decodificación, verificar la URL original por si acaso
+            // Fallback agresivo si falla decode
             if (url.toLowerCase().includes('/home/')) return transparentPixel;
         }
 
