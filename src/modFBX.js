@@ -31,11 +31,18 @@ export async function loadFBX(scene, modelPath, textures = {}, options = {}) {
     const transparentPixel = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 
     manager.setURLModifier((url) => {
-        // Detectar rutas absolutas locales o sospechosas que causan 404 en FBX
-        if (url.includes('/home/') || url.includes('Documents/modeling') || url.startsWith('//') || (url.startsWith('/') && !url.startsWith('/museum/'))) {
+        // Regex para detectar rutas absolutas de sistemas de archivos (Windows/Linux/Mac)
+        // Coincide con: /home/, /Users/, C:/, D:/, etc., o rutas largas que contienen 'Documents'
+        const isAbsolutePath = /^(\/home\/|\/Users\/|[a-zA-Z]:\/|.*Documents\/)/i.test(url);
+
+        // También atrapa URLs que empiezan con doble slash (protocol relative) erróneo local
+        const isProtocolRelativeLocal = url.startsWith('//home') || url.startsWith('//Users');
+
+        if (isAbsolutePath || isProtocolRelativeLocal) {
             // console.warn(`[modFBX] 🛡️ Interceptando ruta absoluta inválida: ${url}`);
             return transparentPixel;
         }
+
         return url;
     });
 
