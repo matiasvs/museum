@@ -292,10 +292,10 @@ import { LightControls } from './components/LightControls.js';
 
     // --- Nuevo Modelo: paredes4EntrePiso.fbx (Configuración Concreto Simple) ---
     loadFBX(scene, 'models/paredes4EntrePiso.fbx', {
-        color: 'textures/4-ConcretSimple/Concrete011_2K-JPG_Color.jpg',
-        roughness: 'textures/4-ConcretSimple/Concrete011_2K-JPG_Roughness.jpg',
-        normal: 'textures/4-ConcretSimple/Concrete011_2K-JPG_NormalGL.jpg',
-        ao: 'textures/4-ConcretSimple/Concrete011_2K-JPG_AmbientOcclusion.jpg'
+        color: 'textures/4-ConcretSimple/Concrete036_2K-JPG_Color.jpg',
+        roughness: 'textures/4-ConcretSimple/Concrete036_2K-JPG_Roughness.jpg',
+        normal: 'textures/4-ConcretSimple/Concrete036_2K-JPG_NormalGL.jpg',
+        ao: 'textures/4-ConcretSimple/Concrete036_2K-JPG_AmbientOcclusion.jpg'
     }, {
         scale: 0.01,
         repeat: [2, 2],
