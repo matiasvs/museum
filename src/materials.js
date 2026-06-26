@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as THREE from 'three/webgpu';
 
 // 1. Configuramos el cargador
 const loadingManager = new THREE.LoadingManager();

@@ -1,5 +1,5 @@
-import * as THREE from 'three';
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
+import * as THREE from 'three/webgpu';
+import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
 
 /**
  * modFBX: Fábrica especializada para cargar y configurar modelos FBX con PBR avanzado (WebGL Standard).

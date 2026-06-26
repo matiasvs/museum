@@ -1,5 +1,5 @@
-import * as THREE from 'three';
-import { EXRLoader } from 'three/examples/jsm/loaders/EXRLoader.js';
+import * as THREE from 'three/webgpu';
+import { EXRLoader } from 'three/addons/loaders/EXRLoader.js';
 
 export async function setupEnvironment(renderer, scene) {
     // 1. Cargamos el HDRI para ambiente y fondo

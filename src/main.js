@@ -1,12 +1,16 @@
 import './style.css';
-import * as THREE from 'three';
+import * as THREE from 'three/webgpu';
+import { pass, output, normalView, mrt, vec3, vec4 } from 'three/tsl';
+import { bloom } from 'three/addons/tsl/display/BloomNode.js';
+import { ao } from 'three/addons/tsl/display/GTAONode.js';
+import { smaa } from 'three/addons/tsl/display/SMAANode.js';
 import { PlayerController } from './player.js';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import Stats from 'stats.js';
 import { setupEnvironment, setupSun, setupFog } from './scene.js';
 import { setupInteraction } from './interaction.js';
 import { ModelLoader } from './ModelLoader.js';
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
+import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
 import { loadFBX } from './modFBX.js';
 
 import { LightControls } from './components/LightControls.js';
@@ -22,11 +26,12 @@ import { LightControls } from './components/LightControls.js';
     stats.dom.style.right = '0px'; // Set right
     document.body.appendChild(stats.dom);
 
-    // 2. Setup Básico (WebGLRenderer)
-    const renderer = new THREE.WebGLRenderer({
+    // 2. Setup Básico (WebGPURenderer)
+    const renderer = new THREE.WebGPURenderer({
         antialias: true,
         powerPreference: "high-performance"
     });
+    await renderer.init();
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.shadowMap.enabled = true;
@@ -778,8 +783,39 @@ import { LightControls } from './components/LightControls.js';
 
     const player = new PlayerController(camera, scene, playerAnchor, renderer.domElement, colliders);
     console.log("Controlador de jugador inicializado.");
+    // 6. Configurar RenderPipeline (Post-procesamiento) con WebGPU
+    const renderPipeline = new THREE.RenderPipeline(renderer);
 
+    const scenePass = pass(scene, camera);
+    scenePass.setMRT(mrt({
+        output: output,
+        normal: normalView
+    }));
 
+    const scenePassColor = scenePass.getTextureNode('output');
+    const scenePassNormal = scenePass.getTextureNode('normal');
+    const scenePassDepth = scenePass.getTextureNode('depth');
+
+    // GTAO (Ground Truth Ambient Occlusion) para sombras de contacto
+    const aoPass = ao(scenePassDepth, scenePassNormal, camera);
+    aoPass.radius.value = 0.5;
+    aoPass.scale.value = 1.0;
+    aoPass.thickness.value = 1.0;
+    const aoPassOutput = aoPass.getTextureNode();
+
+    // Color con AO
+    const colorWithAO = scenePassColor.mul(vec4(vec3(aoPassOutput.r), 1.0));
+
+    // Bloom (Brillo en las luces)
+    const bloomPass = bloom(colorWithAO, 1.2, 0.4, 0.85);
+
+    // Color final combinando AO y Bloom
+    const combinedColor = colorWithAO.add(bloomPass);
+
+    // SMAA (Anti-aliasing de alta calidad)
+    const finalPass = smaa(combinedColor);
+
+    renderPipeline.outputNode = finalPass;
 
     // 7. Loop
     const clock = new THREE.Clock();
@@ -804,8 +840,8 @@ import { LightControls } from './components/LightControls.js';
 
         stats.update();
 
-        // Render estándar WebGL
-        renderer.render(scene, camera);
+        // Render mediante la pipeline de WebGPU
+        renderPipeline.render();
 
         requestAnimationFrame(animate);
     }

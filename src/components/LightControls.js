@@ -1,5 +1,5 @@
 import '../styles/controls.css';
-import * as THREE from 'three';
+import * as THREE from 'three/webgpu';
 
 export class LightControls {
     constructor(container = document.body, onUpdate) {
