@@ -1,0 +1,21 @@
+{
+  "name": "threejs-starter-pisobase",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Three.js WebGPU starter template with PisoBase walking system",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.2.4"
+  },
+  "dependencies": {
+    "gsap": "^3.14.2",
+    "lil-gui": "^0.21.0",
+    "stats.js": "^0.17.0",
+    "three": "^0.185.0"
+  }
+}

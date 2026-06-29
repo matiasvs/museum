@@ -142,7 +142,7 @@ export class PlayerController {
         this.player.position.y += this.verticalVelocity * dt;
 
         // 2.1 Raycasting de Suelo (Afinado)
-        const rayHeight = 3.0;
+        const rayHeight = 2.0;
         const rayOrigin = this.player.position.clone();
         rayOrigin.y += rayHeight;
         this.raycaster.set(rayOrigin, this.downVector);
@@ -153,8 +153,8 @@ export class PlayerController {
         if (intersects.length > 0) {
             const groundY = intersects[0].point.y + this.playerGroundOffset;
 
-            // Detección de colisión (margen generoso para evitar atravesar)
-            if (this.player.position.y <= groundY + 0.2) {
+            // Detección de colisión (margen más pequeño para evitar levantamientos)
+            if (this.player.position.y <= groundY + 0.1) {
                 this.player.position.y = groundY;
                 this.verticalVelocity = 0;
                 this.isGrounded = true;
