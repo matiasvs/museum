@@ -45,7 +45,7 @@ import { setupInteraction } from './interaction.js';
     // 3. Iluminación y Ambiente
     await setupEnvironment(renderer, scene);
     const { light: sunLight, hemiLight, lightHelper } = setupSun(scene);
-    setupFog(scene);
+    const fog = setupFog(scene);
 
     // Loader
     const loader = new GLTFLoader();
@@ -82,10 +82,10 @@ import { setupInteraction } from './interaction.js';
         console.warn("El jugador no tendrá superficie para caminar sin pisoBase.");
     }
 
-    // Cargar hall10.glb (modelo principal del hall)
+    // Cargar hall12.glb (modelo principal del hall)
     try {
-        const hall10Gltf = await loader.loadAsync('models/hall10.glb');
-        const modelHall = hall10Gltf.scene;
+        const hall12Gltf = await loader.loadAsync('models/hall14.glb');
+        const modelHall = hall12Gltf.scene;
         
         modelHall.traverse((child) => {
             if (child.isLight) {
@@ -100,9 +100,9 @@ import { setupInteraction } from './interaction.js';
         
         scene.add(modelHall);
         colliders.push(modelHall);
-        console.log("hall10.glb cargado correctamente.");
+        console.log("hall14.glb cargado correctamente.");
     } catch (err) {
-        console.error("Error cargando hall10.glb:", err);
+        console.error("Error cargando hall14.glb:", err);
     }
 
     // Controles de Jugador
@@ -125,6 +125,76 @@ import { setupInteraction } from './interaction.js';
         aoThickness: 1.0,
         smaaEnabled: true
     };
+
+    // Configuración del Sol/Luz
+    const sunSettings = {
+        elevation: 45,
+        azimuth: 90,
+        intensity: 1.5,
+        temperature: 6500 // Temperatura en Kelvin (6500 = luz blanca estándar)
+    };
+
+    // Configuración de Niebla
+    const fogSettings = {
+        enabled: true,
+        color: '#8899aa',
+        density: 0.002,
+        near: 1,
+        far: 100
+    };
+
+    // Función para convertir temperatura Kelvin a color RGB
+    function kelvinToRGB(kelvin) {
+        let temp = kelvin / 100;
+        let r, g, b;
+
+        if (temp <= 66) {
+            r = 255;
+            g = temp;
+            g = 99.4708025861 * Math.log(g) - 161.1195681661;
+            if (temp <= 19) {
+                b = 0;
+            } else {
+                b = temp - 10;
+                b = 138.5177312231 * Math.log(b) - 305.0447927307;
+            }
+        } else {
+            r = temp - 60;
+            r = 329.698727446 * Math.pow(r, -0.1332047592);
+            g = temp - 60;
+            g = 288.1221695283 * Math.pow(g, -0.0755148492);
+            b = 255;
+        }
+
+        return {
+            r: Math.max(0, Math.min(255, r)) / 255,
+            g: Math.max(0, Math.min(255, g)) / 255,
+            b: Math.max(0, Math.min(255, b)) / 255
+        };
+    }
+
+    // Función para actualizar posición del sol
+    function updateSunPosition() {
+        const clampedElevation = Math.max(0, sunSettings.elevation);
+        const phi = THREE.MathUtils.degToRad(90 - clampedElevation);
+        const theta = THREE.MathUtils.degToRad(sunSettings.azimuth);
+        const sunPos = new THREE.Vector3().setFromSphericalCoords(100, phi, theta);
+        
+        if (sunPos.y < 0) {
+            sunPos.y = Math.abs(sunPos.y);
+            sunPos.x = -sunPos.x;
+            sunPos.z = -sunPos.z;
+        }
+        
+        sunLight.position.copy(sunPos);
+        sunLight.intensity = sunSettings.intensity;
+        
+        // Actualizar color según temperatura
+        const color = kelvinToRGB(sunSettings.temperature);
+        sunLight.color.setRGB(color.r, color.g, color.b);
+        
+        if (lightHelper) lightHelper.update();
+    }
 
     // Panel de Control WebGPU
     const gui = new GUI({ title: 'WebGPU Features' });
@@ -150,6 +220,28 @@ import { setupInteraction } from './interaction.js';
 
     const smaaFolder = gui.addFolder('Anti-Aliasing');
     const smaaEnabled = smaaFolder.add(webgpuSettings, 'smaaEnabled').name('SMAA').onChange(updateRenderPipeline).disable();
+
+    // Controles del Sol/Luz (siempre habilitados)
+    const sunFolder = gui.addFolder('Sun/Light');
+    sunFolder.add(sunSettings, 'elevation', 0, 90).name('Elevation').onChange(updateSunPosition);
+    sunFolder.add(sunSettings, 'azimuth', 0, 360).name('Azimuth').onChange(updateSunPosition);
+    sunFolder.add(sunSettings, 'intensity', 0, 5).name('Intensity').onChange(updateSunPosition);
+    sunFolder.add(sunSettings, 'temperature', 1000, 40000).name('Temperature (K)').onChange(updateSunPosition);
+
+    // Función para actualizar niebla
+    function updateFog() {
+        if (fogSettings.enabled) {
+            scene.fog = new THREE.FogExp2(fogSettings.color, fogSettings.density);
+        } else {
+            scene.fog = null;
+        }
+    }
+
+    // Controles de Niebla (siempre habilitados)
+    const fogFolder = gui.addFolder('Fog');
+    fogFolder.add(fogSettings, 'enabled').name('Enabled').onChange(updateFog);
+    fogFolder.addColor(fogSettings, 'color').name('Color').onChange(updateFog);
+    fogFolder.add(fogSettings, 'density', 0.0001, 0.01).name('Density').onChange(updateFog);
 
     // Variables para la pipeline
     let renderPipeline = null;
@@ -228,6 +320,12 @@ import { setupInteraction } from './interaction.js';
 
     // Inicializar pipeline deshabilitada
     updateRenderPipeline();
+
+    // Inicializar posición del sol
+    updateSunPosition();
+
+    // Inicializar niebla
+    updateFog();
 
     // Loop de Animación
     const clock = new THREE.Clock();

@@ -58,5 +58,6 @@ export function setupSun(scene) {
 // Niebla Estándar (WebGL)
 export function setupFog(scene) {
     scene.fog = new THREE.FogExp2(0x8899aa, 0.002);
+    return scene.fog;
 }
 
