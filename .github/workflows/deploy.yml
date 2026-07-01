@@ -33,7 +33,7 @@ jobs:
           node-version: 24
           cache: 'pnpm'
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --config.allow-build=esbuild
       - name: Build
         run: pnpm run build
       - name: Setup Pages
