@@ -57,7 +57,7 @@ import { setupInteraction } from './interaction.js';
     try {
         const pisoBaseGltf = await loader.loadAsync('models/pisoBase.glb');
         const modelPiso = pisoBaseGltf.scene;
-        
+
         modelPiso.traverse((child) => {
             if (child.isLight) {
                 child.visible = false;
@@ -73,7 +73,7 @@ import { setupInteraction } from './interaction.js';
                 child.material.depthWrite = false;
             }
         });
-        
+
         scene.add(modelPiso);
         colliders.push(modelPiso);
         console.log("PisoBase cargado correctamente.");
@@ -86,7 +86,7 @@ import { setupInteraction } from './interaction.js';
     try {
         const hall12Gltf = await loader.loadAsync('models/hall14.glb');
         const modelHall = hall12Gltf.scene;
-        
+
         modelHall.traverse((child) => {
             if (child.isLight) {
                 child.visible = false;
@@ -97,7 +97,7 @@ import { setupInteraction } from './interaction.js';
                 child.castShadow = true;
             }
         });
-        
+
         scene.add(modelHall);
         colliders.push(modelHall);
         console.log("hall14.glb cargado correctamente.");
@@ -117,7 +117,7 @@ import { setupInteraction } from './interaction.js';
     // Configuración WebGPU
     const webgpuSettings = {
         enabled: false,
-        bloomThreshold: 1.2,
+        bloomThreshold: 1.005,
         bloomStrength: 0.4,
         bloomRadius: 0.85,
         aoRadius: 0.5,
@@ -128,20 +128,14 @@ import { setupInteraction } from './interaction.js';
 
     // Configuración del Sol/Luz
     const sunSettings = {
-        elevation: 45,
-        azimuth: 90,
-        intensity: 1.5,
-        temperature: 6500 // Temperatura en Kelvin (6500 = luz blanca estándar)
+        elevation: 1,
+        azimuth: 281,
+        intensity: 0.16,
+        temperature: 1111 // Temperatura en Kelvin (6500 = luz blanca estándar)
     };
 
-    // Configuración de Niebla
-    const fogSettings = {
-        enabled: true,
-        color: '#8899aa',
-        density: 0.002,
-        near: 1,
-        far: 100
-    };
+    // Niebla desactivada
+    scene.fog = null;
 
     // Función para convertir temperatura Kelvin a color RGB
     function kelvinToRGB(kelvin) {
@@ -179,20 +173,20 @@ import { setupInteraction } from './interaction.js';
         const phi = THREE.MathUtils.degToRad(90 - clampedElevation);
         const theta = THREE.MathUtils.degToRad(sunSettings.azimuth);
         const sunPos = new THREE.Vector3().setFromSphericalCoords(100, phi, theta);
-        
+
         if (sunPos.y < 0) {
             sunPos.y = Math.abs(sunPos.y);
             sunPos.x = -sunPos.x;
             sunPos.z = -sunPos.z;
         }
-        
+
         sunLight.position.copy(sunPos);
         sunLight.intensity = sunSettings.intensity;
-        
+
         // Actualizar color según temperatura
         const color = kelvinToRGB(sunSettings.temperature);
         sunLight.color.setRGB(color.r, color.g, color.b);
-        
+
         if (lightHelper) lightHelper.update();
     }
 
@@ -228,20 +222,7 @@ import { setupInteraction } from './interaction.js';
     sunFolder.add(sunSettings, 'intensity', 0, 5).name('Intensity').onChange(updateSunPosition);
     sunFolder.add(sunSettings, 'temperature', 1000, 40000).name('Temperature (K)').onChange(updateSunPosition);
 
-    // Función para actualizar niebla
-    function updateFog() {
-        if (fogSettings.enabled) {
-            scene.fog = new THREE.FogExp2(fogSettings.color, fogSettings.density);
-        } else {
-            scene.fog = null;
-        }
-    }
 
-    // Controles de Niebla (siempre habilitados)
-    const fogFolder = gui.addFolder('Fog');
-    fogFolder.add(fogSettings, 'enabled').name('Enabled').onChange(updateFog);
-    fogFolder.addColor(fogSettings, 'color').name('Color').onChange(updateFog);
-    fogFolder.add(fogSettings, 'density', 0.0001, 0.01).name('Density').onChange(updateFog);
 
     // Variables para la pipeline
     let renderPipeline = null;
@@ -324,8 +305,6 @@ import { setupInteraction } from './interaction.js';
     // Inicializar posición del sol
     updateSunPosition();
 
-    // Inicializar niebla
-    updateFog();
 
     // Loop de Animación
     const clock = new THREE.Clock();
